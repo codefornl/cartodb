@@ -19,7 +19,7 @@ module Hubspot
     end
 
     def enabled?
-      token.present? && base_url.present?
+      token.present? && !token.blank? && base_url.present?
     end
 
     private

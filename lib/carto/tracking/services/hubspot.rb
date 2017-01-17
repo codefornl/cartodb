@@ -9,7 +9,6 @@ module Carto
 
           event_name = name.downcase.tr(' ', '_')
           id = fetch_event_id_for_event_name(event_name)
-
           if id.present?
             hubspot_job = Resque::TrackingJobs::SendHubspotEvent
             Resque.enqueue(hubspot_job, id, @format.to_hubspot)

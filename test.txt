@@ -1,0 +1,258 @@
+1) Map viewer role support #validations #options requires dashboard_menu to be present
+    Failure/Error: @map.valid?.should be_false
+      expected: false value
+           got: true
+    # /home/miblon/NetBeansProjects/cartodb/spec/models/map_spec.rb:117:in `block (5 levels) in <top (required)>'
+
+ 2) Map viewer role support #validations #options requires layer_selector to be present
+    Failure/Error: @map.valid?.should be_false
+      expected: false value
+           got: true
+    # /home/miblon/NetBeansProjects/cartodb/spec/models/map_spec.rb:128:in `block (5 levels) in <top (required)>'
+
+ 3) Map viewer role support #validations #options rejects incomplete options
+    Failure/Error: @map.errors[:options][0].should include('dashboard_menu')
+      expected "The property '#/' contains additional properties [\"spam\"] outside of the schema when none are allowed in schema 1ebd259a-9ad3-5bb3-a854-fd9a23c75534#" to include "dashboard_menu"
+    # /home/miblon/NetBeansProjects/cartodb/spec/models/map_spec.rb:148:in `block (5 levels) in <top (required)>'
+
+ 4) Table post import processing tests should optimize the table
+    Failure/Error: Table.any_instance.expects(:optimize).once
+    Mocha::ExpectationError:
+      not all expectations were satisfied
+      unsatisfied expectations:
+      - expected exactly once, not yet invoked: #<AnyInstance:Table>.optimize(any_parameters)
+      satisfied expectations:
+      - allowed any number of times, not yet invoked: #<AnyInstance:CartoDB::UserModule::DBService>.enable_remote_db_user(any_parameters)
+      - allowed any number of times, not yet invoked: #<AnyInstance:CartoDB::Varnish>.send_command(any_parameters)
+      - allowed any number of times, not yet invoked: #<AnyInstance:Table>.update_cdb_tablemetadata(any_parameters)
+      - allowed any number of times, not yet invoked: #<AnyInstance:Carto::NamedMaps::Api>.destroy(any_parameters)
+      - allowed any number of times, not yet invoked: #<AnyInstance:Carto::NamedMaps::Api>.update(any_parameters)
+      - allowed any number of times, not yet invoked: #<AnyInstance:Carto::NamedMaps::Api>.create(any_parameters)
+      - allowed any number of times, not yet invoked: #<AnyInstance:Carto::NamedMaps::Api>.show(any_parameters)
+    # /home/miblon/NetBeansProjects/cartodb/spec/models/table_spec.rb:1410:in `block (3 levels) in <top (required)>'
+
+ 5) Table post import processing tests should assign table_id
+    Failure/Error: data_import.table.table_id.should_not be_nil
+      expected: not nil
+           got: nil
+    # /home/miblon/NetBeansProjects/cartodb/spec/models/table_spec.rb:1417:in `block (3 levels) in <top (required)>'
+
+ 6) Table imports file SHP1.zip
+    Failure/Error: data_import.table.name.should == "esp_adm1"
+      expected: "esp_adm1"
+           got: nil (using ==)
+    # /home/miblon/NetBeansProjects/cartodb/spec/models/table_spec.rb:1851:in `block (3 levels) in <top (required)>'
+
+ 7) Carto::Api::UserPresenter Compares old and new ways of 'presenting' user data
+    Failure/Error: new_data[:last_visualization_created_at].to_s.should == old_data[:last_visualization_created_at].to_s
+      expected: "2017-01-16 21:24:34 +0000"
+           got: "2017-01-16 21:24:34 +0100" (using ==)
+    # /home/miblon/NetBeansProjects/cartodb/spec/models/user_presenter_spec.rb:134:in `compare_data'
+    # /home/miblon/NetBeansProjects/cartodb/spec/models/user_presenter_spec.rb:63:in `block (2 levels) in <top (required)>'
+
+ 8) Carto::Builder::Public::EmbedsController#show_protected does not display visualizations without mapcaps
+    Failure/Error: post builder_visualization_public_embed_protected_url(visualization_id: unpublished_visualization.id, password: TEST_PASSWORD)
+    ActionView::MissingTemplate:
+      Missing template public/404 with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder]}. Searched in:
+        * "/home/miblon/NetBeansProjects/cartodb/app/views"
+        * "/tmp/imports/20170116-6588-17omtzj"
+        * "/"
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:162:in `block (2 levels) in render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:160:in `render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/carto/builder/public/embeds_controller.rb:87:in `ensure_protected_viewable'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:99:in `wrap_in_profiler'
+    # /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/public/embeds_controller_spec.rb:224:in `block (3 levels) in <top (required)>'
+
+ 9) Carto::Builder::VisualizationsController#show returns 404 for non-existent visualizations
+    Failure/Error: get builder_visualization_url(id: UUIDTools::UUID.timestamp_create.to_s)
+    ActionView::MissingTemplate:
+      Missing template public/404 with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder]}. Searched in:
+        * "/home/miblon/NetBeansProjects/cartodb/app/views"
+        * "/tmp/imports/20170116-6588-17omtzj"
+        * "/"
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:162:in `block (2 levels) in render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:160:in `render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/carto/builder/visualizations_controller.rb:68:in `load_derived_visualization'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:99:in `wrap_in_profiler'
+    # /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/visualizations_controller_spec.rb:102:in `block (3 levels) in <top (required)>'
+
+ 10) Carto::Builder::VisualizationsController#show returns 404 for non-derived visualizations
+    Failure/Error: get builder_visualization_url(id: UUIDTools::UUID.timestamp_create.to_s)
+    ActionView::MissingTemplate:
+      Missing template public/404 with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder]}. Searched in:
+        * "/home/miblon/NetBeansProjects/cartodb/app/views"
+        * "/tmp/imports/20170116-6588-17omtzj"
+        * "/"
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:162:in `block (2 levels) in render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:160:in `render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/carto/builder/visualizations_controller.rb:68:in `load_derived_visualization'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:99:in `wrap_in_profiler'
+    # /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/visualizations_controller_spec.rb:110:in `block (3 levels) in <top (required)>'
+
+ 11) Carto::Builder::VisualizationsController#show does not show raster kind visualizations
+    Failure/Error: get builder_visualization_url(id: @visualization.id)
+    ActionView::MissingTemplate:
+      Missing template public/404 with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder]}. Searched in:
+        * "/home/miblon/NetBeansProjects/cartodb/app/views"
+        * "/tmp/imports/20170116-6588-17omtzj"
+        * "/"
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:162:in `block (2 levels) in render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:160:in `render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/carto/builder/visualizations_controller.rb:76:in `editable_visualizations_only'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:99:in `wrap_in_profiler'
+    # /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/visualizations_controller_spec.rb:155:in `block (3 levels) in <top (required)>'
+
+ 12) Carto::Builder::VisualizationsController#show does not show slide type visualizations
+    Failure/Error: get builder_visualization_url(id: @visualization.id)
+    ActionView::MissingTemplate:
+      Missing template public/404 with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder]}. Searched in:
+        * "/home/miblon/NetBeansProjects/cartodb/app/views"
+        * "/tmp/imports/20170116-6588-17omtzj"
+        * "/"
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:162:in `block (2 levels) in render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:160:in `render_404'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/carto/builder/visualizations_controller.rb:68:in `load_derived_visualization'
+    # /home/miblon/NetBeansProjects/cartodb/app/controllers/application_controller.rb:99:in `wrap_in_profiler'
+    # /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/visualizations_controller_spec.rb:164:in `block (3 levels) in <top (required)>'
+
+ 13) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export builds base visualization that can be persisted by VisualizationsExportPersistenceService
+    Failure/Error: visualization = Carto::VisualizationsExportPersistenceService.new.save_import(@user, imported_viz)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:472:in `block (4 levels) in <top (required)>'
+
+ 14) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export builds base vis with symbols in name that can be persisted by VisualizationsExportPersistenceService
+    Failure/Error: visualization = Carto::VisualizationsExportPersistenceService.new.save_import(@user, imported_viz)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:508:in `block (4 levels) in <top (required)>'
+
+ 15) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export is backwards compatible with old models
+    Failure/Error: visualization = Carto::VisualizationsExportPersistenceService.new.save_import(@user, imported_viz)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:541:in `block (4 levels) in <top (required)>'
+
+ 16) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export imports private maps as public for users that have not private maps
+    Failure/Error: visualization = Carto::VisualizationsExportPersistenceService.new.save_import(@user, imported)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:553:in `block (4 levels) in <top (required)>'
+
+ 17) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export imports protected maps as private
+    Failure/Error: visualization = Carto::VisualizationsExportPersistenceService.new.save_import(@user, imported)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:564:in `block (4 levels) in <top (required)>'
+
+ 18) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export imports protected maps as public if the user does not have private maps enabled
+    Failure/Error: visualization = Carto::VisualizationsExportPersistenceService.new.save_import(@user, imported)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:572:in `block (4 levels) in <top (required)>'
+
+ 19) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export Doesn't register layer tables dependencies if user table doesn't exist
+    Failure/Error: visualization = Carto::VisualizationsExportPersistenceService.new.save_import(@user, imported)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:600:in `block (4 levels) in <top (required)>'
+
+ 20) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export Register layer tables dependencies if user table exists
+    Failure/Error: visualization = Carto::VisualizationsExportPersistenceService.new.save_import(@user, imported)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:609:in `block (4 levels) in <top (required)>'
+
+ 21) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export maintains backwards compatibility with 2.0.7 (without Widget.style)
+    Failure/Error: imported_viz = Carto::VisualizationsExportPersistenceService.new.save_import(@user, visualization)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:627:in `block (5 levels) in <top (required)>'
+
+ 22) Carto::VisualizationsExportService2 importing #build_visualization_from_json_export maintains backwards compatibility with 2.0.1 (without username) when renaming tables
+    Failure/Error: imported_viz = Carto::VisualizationsExportPersistenceService.new.save_import(@user, built_viz)
+    RuntimeError:
+      Carto::Definition: Couldn't read from file
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:23:in `rescue in load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/lib/carto/definition.rb:14:in `load_from_file'
+    # /home/miblon/NetBeansProjects/cartodb/app/models/carto/legend.rb:71:in `validate_conf_schema'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:30:in `block in save_import'
+    # /home/miblon/NetBeansProjects/cartodb/app/services/carto/visualizations_export_persistence_service.rb:14:in `save_import'
+    # /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:722:in `block (6 levels) in <top (required)>'
+
+Finished in 28 minutes 21.01 seconds
+1143 examples, 22 failures, 15 pending
+
+Failed examples:
+
+rspec /home/miblon/NetBeansProjects/cartodb/spec/models/map_spec.rb:113 # Map viewer role support #validations #options requires dashboard_menu to be present
+rspec /home/miblon/NetBeansProjects/cartodb/spec/models/map_spec.rb:124 # Map viewer role support #validations #options requires layer_selector to be present
+rspec /home/miblon/NetBeansProjects/cartodb/spec/models/map_spec.rb:143 # Map viewer role support #validations #options rejects incomplete options
+rspec /home/miblon/NetBeansProjects/cartodb/spec/models/table_spec.rb:1408 # Table post import processing tests should optimize the table
+rspec /home/miblon/NetBeansProjects/cartodb/spec/models/table_spec.rb:1414 # Table post import processing tests should assign table_id
+rspec /home/miblon/NetBeansProjects/cartodb/spec/models/table_spec.rb:1847 # Table imports file SHP1.zip
+rspec /home/miblon/NetBeansProjects/cartodb/spec/models/user_presenter_spec.rb:11 # Carto::Api::UserPresenter Compares old and new ways of 'presenting' user data
+rspec /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/public/embeds_controller_spec.rb:218 # Carto::Builder::Public::EmbedsController#show_protected does not display visualizations without mapcaps
+rspec /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/visualizations_controller_spec.rb:101 # Carto::Builder::VisualizationsController#show returns 404 for non-existent visualizations
+rspec /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/visualizations_controller_spec.rb:107 # Carto::Builder::VisualizationsController#show returns 404 for non-derived visualizations
+rspec /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/visualizations_controller_spec.rb:151 # Carto::Builder::VisualizationsController#show does not show raster kind visualizations
+rspec /home/miblon/NetBeansProjects/cartodb/spec/requests/carto/builder/visualizations_controller_spec.rb:160 # Carto::Builder::VisualizationsController#show does not show slide type visualizations
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:469 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export builds base visualization that can be persisted by VisualizationsExportPersistenceService
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:502 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export builds base vis with symbols in name that can be persisted by VisualizationsExportPersistenceService
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:538 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export is backwards compatible with old models
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:551 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export imports private maps as public for users that have not private maps
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:561 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export imports protected maps as private
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:568 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export imports protected maps as public if the user does not have private maps enabled
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:598 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export Doesn't register layer tables dependencies if user table doesn't exist
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:606 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export Register layer tables dependencies if user table exists
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:617 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export maintains backwards compatibility with 2.0.7 (without Widget.style)
+rspec /home/miblon/NetBeansProjects/cartodb/spec/services/carto/visualizations_export_service_2_spec.rb:713 # Carto::VisualizationsExportService2 importing #build_visualization_from_json_export maintains backwards compatibility with 2.0.1 (without username) when renaming tables
+Coverage report generated for specs_6588 to /home/miblon/NetBeansProjects/cartodb/coverage. 18831 / 29645 LOC (63.52%) covered.
+Coverage report generated for specs_6588 to /home/miblon/NetBeansProjects/cartodb/coverage/coverage.json. 18831 / 29645 LOC (63.52%) covered.
+Coverage report Rcov style generated for specs_6588 to /home/miblon/NetBeansProjects/cartodb/coverage/rcov
+make: *** [Makefile:326: check-1] Error 1

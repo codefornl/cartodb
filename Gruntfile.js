@@ -44,8 +44,8 @@
           done && done(err ? new Error(err): null);
         });
       }
-      checkVersion('npm -v', REQUIRED_NPM_VERSION, 'npm', done);
-      checkVersion('node -v', REQUIRED_NODE_VERSION, 'node', done);
+      //checkVersion('npm -v', REQUIRED_NPM_VERSION, 'npm', done);
+      //checkVersion('node -v', REQUIRED_NODE_VERSION, 'node', done);
     }
 
     preFlight(function (err) {
@@ -72,7 +72,7 @@
     // use grunt --environment production
     var env = './config/grunt_' + (grunt.option('environment') || 'development') + '.json';
     if (grunt.file.exists(env)) {
-      env = grunt.file.readJSON(env)
+      env = grunt.file.readJSON(env);
     } else {
       throw grunt.util.error(env +' file is missing! See '+ env +'.sample for how it should look like');
     }
@@ -153,8 +153,8 @@
       var https = require('https');
 
       var options = url.parse(grunt.template.process('https://api.fastly.com/service/<%= aws.FASTLY_CARTODB_SERVICE %>/purge_all'));
-      options['method'] = 'POST';
-      options['headers'] = {
+      options.method = 'POST';
+      options.headers = {
         'Fastly-Key': aws.FASTLY_API_KEY,
         'Content-Length': '0' //Disables chunked encoding
       };
@@ -164,7 +164,7 @@
         if(response.statusCode == 200) {
           grunt.log.ok('CDN invalidated (fastly)');
         } else {
-          grunt.log.error('CDN not invalidated (fastly), code: ' + response.statusCode)
+          grunt.log.error('CDN not invalidated (fastly), code: ' + response.statusCode);
         }
         done();
       }).on('error', function(e) {
@@ -214,7 +214,7 @@
         var copy_path = COPY_PATHS[j];
         var files = grunt.config.get('copy.' + copy_path + '.files');
         for (var i = 0, l = files.length; i < l; ++i) {
-          var cfg = grunt.config.get('copy.' + copy_path + '.files.' + i);
+          cfg = grunt.config.get('copy.' + copy_path + '.files.' + i);
           if (filepath.indexOf(cfg.cwd) !== -1) {
             grunt.config('copy.' + copy_path + '.files.' + i + '.src', filepath.replace(cfg.cwd, ''));
           } else {

@@ -66,8 +66,8 @@ describe CartoDB::ImageMetadata do
     it 'should extract svg dimensions' do
       metadata = CartoDB::ImageMetadata.new(svg_path)
       expect { metadata.parse_identify }.to_not raise_error
-      metadata.width.should eq 645
-      metadata.height.should eq 585
+      metadata.width.should eq 605
+      metadata.height.should eq 548
     end
   end
 end

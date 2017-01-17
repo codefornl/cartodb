@@ -238,7 +238,9 @@ module ApplicationHelper
 
   def raise_on_asset_absence *sources
     sources.flatten.each do |source|
-      next if source == {:media => "all"}
+      logger.debug source
+      next if source == {:media => "all"} || source.downcase.start_with?('//', 'https://', 'http://')
+      # // Should skip CDN or external sources
       raise "Hey, #{source} is not in the precompile list. This will fall apart in production." unless Rails.application.config.assets.precompile.any? do |matcher|
         if matcher.is_a? Proc
           matcher.call(source)

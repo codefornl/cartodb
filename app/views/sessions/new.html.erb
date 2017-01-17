@@ -37,7 +37,7 @@
                 <% if @organization.nil? || @organization.auth_username_password_enabled %>
 
                   <div class="Sessions-field">
-                    <%= text_field_tag :email, CartoDB.extract_subdomain(request), :title => "Email or username", placeholder: "email or username", class: "CDB-Size-medium #{@organization.present? ? 'Sessions-input' : 'Sessions-navy-input'} topBorderRadius" %>
+                    <%= text_field_tag :email, CartoDB.extract_subdomain(request), :title => I18n.t('general.email_or_username', default: "Email or username"), placeholder: I18n.t('general.email_or_username', default: "Email or username").downcase, class: "CDB-Size-medium #{@organization.present? ? 'Sessions-input' : 'Sessions-navy-input'} topBorderRadius" %>
 
                     <% if @login_error %>
                       <div class="Sessions-fieldError js-Sessions-fieldError" data-content="<%= @login_error %>">!</div>
@@ -45,7 +45,7 @@
                   </div>
 
                   <div class="Sessions-field">
-                    <%= password_field_tag :password, "", placeholder: "password", class: "CDB-Size-medium #{@organization.present? ? 'Sessions-input' : 'Sessions-navy-input'} bottomBorderRadius" %>
+                    <%= password_field_tag :password, "", placeholder: I18n.t('general.password', default: "password").downcase, class: "CDB-Size-medium #{@organization.present? ? 'Sessions-input' : 'Sessions-navy-input'} bottomBorderRadius" %>
 
                     <% if @login_error %>
                       <div class="Sessions-fieldError js-Sessions-fieldError" data-content="<%= @login_error %>">!</div>
@@ -61,7 +61,7 @@
                   <div class="Sessions-field">
                     <p>
                       <button type="submit" class="Sessions-submitButton js-Sessions-button js-Loading">
-                        <span class="js-Loading-text">Login</span>
+                        <span class="js-Loading-text"><%= I18n.t('general.login', default: "Login") %></span>
                         <span class="js-Loading-anim" style="display: none;">
                           <span class="Loading-item">
                             <span class="Loading-itemInner Loading-itemInner--01"></span>

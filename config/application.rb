@@ -42,8 +42,9 @@ module CartoDB
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.available_locales = %w(en nl)
+    config.i18n.default_locale = :en
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
@@ -75,7 +76,6 @@ module CartoDB
       dashboard.js
       dashboard_templates.js
       public_dashboard_deps.js
-      public_dashboard.js
       data_library_deps.js
       data_library.js
       public_map.js

@@ -1,0 +1,11 @@
+
+nl:
+  user_mailer:
+    ask_for_invitation:
+      subject: 'Bedankt voor het aanmelden bij Carto'
+    invitation_sent:
+      subject: 'Bedankt voor het aanmelden bij Carto'
+  general:
+    email_or_username: 'Email of gebruikersnaam'
+    password: 'Wachtwoord'
+    login: 'Aanmelden'
