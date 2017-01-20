@@ -7,12 +7,12 @@
         <ul class="Filters-group">
           <li class="Filters-typeItem">
             <a href="<%= CartoDB.url(self, 'api_key_credentials', {}, current_user) %>" class=" CDB-Text CDB-Size-medium Filters-typeLink <%= 'is-selected' if "#{params[:controller]}_#{params[:action]}" == "admin/client_applications_api_key" %>">
-              CARTO
+                <%= I18n.t('apikeys.carto', default: "CARTO")%>
             </a>
           </li>
           <li class="Filters-typeItem">
             <a href="<%= CartoDB.url(self, 'mobile_apps', {}, current_user) %>" class="CDB-Text CDB-Size-medium Filters-typeLink <%= 'is-selected' if "#{params[:controller]}" == "carto/admin/mobile_apps" %>">
-              Mobile apps
+              <%= I18n.t('apikeys.mobile_apps', default: "Mobile apps")%>
             </a>
           </li>
         </ul>
@@ -20,7 +20,7 @@
         <% if "#{params[:controller]}_#{params[:action]}" == "carto/admin/mobile_apps_index" %>
           <ul class="Filters-group">
             <a href="<%= CartoDB.url(self, 'new_mobile_app', {}, current_user) %>" class="CDB-Button CDB-Button--primary">
-              <span class="CDB-Button-Text CDB-Text is-semibold CDB-Size-small u-upperCase">New application</span>
+              <span class="CDB-Button-Text CDB-Text is-semibold CDB-Size-small u-upperCase"><%= I18n.t('apikeys.new_app', default: "New application")%></span>
             </a>
           </ul>
         <% end %>
@@ -31,7 +31,7 @@
 <% else %>
 
   <div class="FormAccount-title">
-    <p class="FormAccount-titleText">The simplest way to access your private data</p>
+    <p class="FormAccount-titleText"><%= I18n.t('apikeys.form_titletext', default: "The simplest way to access your private data")%></p>
     <span class="Filters-separator"></span>
   </div>
 

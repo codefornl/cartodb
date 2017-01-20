@@ -1,5 +1,9 @@
 
 nl:
+  error:
+    wrong_account_or_password: 'Gebruiker of wachtwoord onbekend'
+    user_not_in_organization: 'Gebruikersnaam is niet aangemeld bij deze organisatie'
+    cannot_be_blank: 'Kan niet blanco zijn'
   user_mailer:
     ask_for_invitation:
       subject: 'Bedankt voor het aanmelden bij Carto'
@@ -9,3 +13,31 @@ nl:
     email_or_username: 'Email of gebruikersnaam'
     password: 'Wachtwoord'
     login: 'Aanmelden'
+    signup: 'Registreren'
+    builder: 'Builder'
+    engine: 'Engine'
+    solutions: 'Oplossingen'
+    pricing: 'Kosten'
+    blog: 'Blog'
+    version: 'Versie'
+    documentation: 'Documentatie'
+    guides: 'Handleidingen'
+    support: 'Ondersteuning'
+    contact: 'Contact'
+    discover: 'Ontdek'
+  apikeys:
+    carto: 'CARTO'
+    mobile_apps: 'Toepassingen'
+    new_app: 'Nieuwe toepassing'
+    form_titletext: 'De eenvoudigste manier je eigen data te benaderen'
+  apikeys_cta:
+    unlock_potential: 'Ontgrendel het potentieel in toepassingen'
+    create_solutions: "Maak oplossingen met verschillende uitbreidingen en API's"
+    free_for_internal: 'Gratis voor interne en niet commerciële toepassingen'
+    cloud_on_premise: 'In de cloud of op locatie'
+    bi_connectors: 'Verbind met BI omgevingen'
+    full_api_access: 'Volledige toegang tot de API'
+    pay_per_seat: 'Betaal per ontwikkelaar'
+
+  no_results:
+    empty: "heeft geen resultaten"

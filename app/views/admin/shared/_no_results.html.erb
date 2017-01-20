@@ -3,7 +3,7 @@
     <i class="CDB-IconFont CDB-IconFont-map"></i>
   </div>
   <% if @total_count > 0 %>
-    <h3 class="CDB-Text CDB-Size-large u-mainTextColor u-secondaryTextColor u-bSpace--m u-tSpace-xl"><%= @name %> doesn't have any items on this page</h3>
+    <h3 class="CDB-Text CDB-Size-large u-mainTextColor u-secondaryTextColor u-bSpace--m u-tSpace-xl"><%= @name %> <%= I18n.t('no_results.empty', default: "doesn't have any items on this page")%></h3>
     <p class="CDB-Text CDB-Size-medium u-altTextColor">Try the <%= link_to 'first page', @first_page_url %> instead</p>
   <% else  %>
     <h3 class="CDB-Text CDB-Size-large u-mainTextColor u-secondaryTextColor u-bSpace--m u-tSpace-xl"><%= @name %> doesn't have any public <%= @content_type === 'maps' ? 'maps' : 'datasets' %> yet</h3>

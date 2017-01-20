@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
     candidate_user = Carto::User.where(username: username).first
 
     if central_enabled? && @organization && candidate_user && !candidate_user.belongs_to_organization?(@organization)
-      @login_error = 'The user is not part of the organization'
+      @login_error = I18n.t('error.user_not_in_organization', default: 'The user is not part of the organization')
       @user_login_url = Cartodb::Central.new.login_url
       return render(action: 'new')
     end
@@ -77,7 +77,7 @@ class SessionsController < ApplicationController
 
     # Use an instance variable to show the error instead of the flash hash. Setting the flash here means setting
     # the flash for the next request and we want to show the message only in the current one
-    @login_error = (params[:email].blank? && params[:password].blank?) ? 'Can\'t be blank' : 'Your account or your password is not ok'
+    @login_error = (params[:email].blank? && params[:password].blank?) ? I18n.t('error.cannot_be_blank', default:'Can\'t be blank') : I18n.t('error.wrong_account_or_password', default: 'Your account or your password is not ok')
 
     respond_to do |format|
       format.html do

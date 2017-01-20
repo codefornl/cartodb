@@ -8,6 +8,7 @@
         </script>
   <% end %>
   <script type="text/javascript">
+    var ACTIVE_LOCALE = '<%= I18n.locale %>';
     var username = "<%= current_user.username %>";
     var user_data = <%= safe_js_object current_user.data.to_json %>;
     var config = <%= safe_js_object frontend_config %>;
@@ -16,7 +17,11 @@
     var isJustLoggedIn = <%= (!!@just_logged_in).to_s %>;
     var default_fallback_basemap = <%= safe_js_object current_user.default_basemap.to_json %>;
   </script>
-  <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/i18next/5.0.0/i18next.min.js', '//cartodb-libs.global.ssl.fastly.net/cartodbui/assets/4.5.98/javascripts/cdb.js', '//cartodb-libs.global.ssl.fastly.net/cartodbui/assets/4.5.98/javascripts/models.js', 'dashboard_templates.js', 'dashboard_deps.js', 'dashboard.js' -%>
+  <% if I18n.locale == :en %>
+  <%= javascript_include_tag 'cdb.js', 'models.js', 'dashboard_templates.js', 'dashboard_deps.js', 'dashboard.js' -%>
+  <% else %>
+  <%= javascript_include_tag 'cdb.js', 'models.js', 'dashboard_templates.js', 'dashboard_deps.js', 'dashboard_' + I18n.locale.to_s + '.js' -%>
+  <% end %>
 <% end %>
 
 <%= content_for(:css) do -%>
